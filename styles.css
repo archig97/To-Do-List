@@ -13,4 +13,8 @@ body{
 .modal-header{
     color: floralwhite;
 }
+
+.btn-close{
+background-color: floralwhite;
+}
     
