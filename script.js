@@ -1,6 +1,6 @@
 //CALLS MODALS ON BUTTON CLICKS
 
-
+let userNo = Number(localStorage.getItem('noOfUsers'));
          //LOGIN
          var loginModal = document.getElementById('loginModal');
          var loginBtn = document.getElementById("loginBtn");
@@ -58,7 +58,7 @@
          function validateSignupForm(e){ 
             
            
-           
+           var flag=true;
            
         var firstName=document.getElementById("firstname"); 
  
@@ -67,7 +67,7 @@
          var password=document.getElementById("signupPassword");
            
          if (firstName.value==null || firstName.value==""){  
-           
+           flag=false;
            firstName.className+=" error";
            
            document.getElementById("firstNameError").className+=" err-msg";
@@ -78,7 +78,7 @@
          }
 
          if (lastName.value==null || lastName.value==""){  
-           
+            flag=false;
             lastName.className+=" error";
             
             document.getElementById("lastNameError").className+=" err-msg";
@@ -90,6 +90,7 @@
 
           if(validateEmail(emailid.value)==false)
           {
+            flag=false;
             emailid.className+=" error";
             document.getElementById("emailError").className+=" err-msg";
             document.getElementById("emailError").innerText="PLEASE ENTER VALID EMAIL"
@@ -97,12 +98,31 @@
 
           if(password.value.length<6)
           {
+            flag=false;
             password.className+=" error";
             document.getElementById("pwSignupError").className+=" err-msg";
             document.getElementById("pwSignupError").innerText="PASSWORD MUST BE 6 CHARACTERS LONG";
           }
          
-        
+        if(flag)
+        {
+            var currentUserFname="user"+localStorage.getItem('noOfUsers')+"fname";
+            localStorage.setItem(currentUserFname,firstName.value);
+
+            var currentUserLname="user"+localStorage.getItem('noOfUsers')+"lname";
+            localStorage.setItem(currentUserLname,lastName.value);
+
+            var currentUserEmail="user"+localStorage.getItem('noOfUsers')+"email";
+            localStorage.setItem(currentUserEmail,emailid.value);
+
+            var currentUserPassword="user"+localStorage.getItem('noOfUsers')+"password";
+            localStorage.setItem(currentUserPassword,password.value);
+
+            localStorage.setItem('noOfUsers',(userNo+1).toString());
+
+
+            
+        }
         
          }
 
