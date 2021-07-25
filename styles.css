@@ -17,4 +17,9 @@ body{
 .btn-close{
 background-color: floralwhite;
 }
+
+.err{
+    border:3px solid red;
+    color:red;
+}
     
