@@ -36,32 +36,83 @@
          //------------------------------------------------------------------------------------------------------
          
          //PREVENT SUBMISSION OF FORMS WITH INCORRECT FIELDS
+
+         
+         function validateEmail(emailid)  
+         {  
+            if (emailid==null || emailid==""){return false;}
+                
+                else{
+         var atposition=emailid.prototype.indexOf("@");  
+         var dotposition=emailid.lastIndexOf(".");  
+         if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+            
+           return false;  
+           }  
+        }
+
+           return true;
+         }  
+
          
          function validateSignupForm(e){ 
-
+            
            
-         var firstName=document.getElementById("firstname");  
-         var lastName=document.getElementById("lastname");  
+           
+           
+;         var firstName=document.getElementById("firstname"); 
+ 
+         var lastName=document.getElementById("lastname"); 
+         var emailid=document.getElementById("signupEmail"); 
          var password=document.getElementById("signupPassword");
            
-         if (firstName==null || firstName==""){  
-            e.preventDefault();
-           firstName.className+=" err";
-           firstName.innerText="PLEASE ENTER VALID FIRST NAME" ;
+         if (firstName.value==null || firstName.value==""){  
+           
+           firstName.className+=" error";
+           
+           document.getElementById("firstNameError").className+=" err-msg";
+           document.getElementById("firstNameError").innerText="PLEASE ENTER VALID FIRST NAME"
+           
+          console.log(firstName.className);
           
          }
+
+         if (lastName.value==null || lastName.value==""){  
+           
+            lastName.className+=" error";
+            
+            document.getElementById("lastNameError").className+=" err-msg";
+            document.getElementById("lastNameError").innerText="PLEASE ENTER VALID LAST NAME"
+            
+          
+           
+          }
+
+          if(validateEmail(emailid)==false)
+          {
+            emailid.className+=" error";
+            document.getElementById("emailError").className+=" err-msg";
+            document.getElementById("emailError").innerText="PLEASE ENTER VALID EMAIL"
+          }
+
+          if(password.value.length<6)
+          {
+            password.className+=" error";
+            document.getElementById("pwSignupError").className+=" err-msg";
+            document.getElementById("pwSignupError").innerText="PASSWORD MUST BE 6 CHARACTERS LONG";
+          }
          
-        //  if (lastName==null || lastName==""){  
-        //    alert("Last Name can't be blank");  
-        //    return false;  
-        //  }
+        
         //  if(password.length<6){  
         //    alert("Password must be at least 6 characters long.");  
         //    return false;  
         //    }  
          }
          
-         document.getElementById("signupForm").addEventListener("submit",validateSignupForm(e));
+         document.getElementById("signupForm").addEventListener("submit",function(e){
+            e.preventDefault();
+            validateSignupForm();
+         });
          
          
          

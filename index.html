@@ -71,41 +71,41 @@
             </div>
             <div class="modal-body">
                 
-              <form class="row g-2" id="signupForm">
-                <div class="col-sm-6">
+              <form id="signupForm" class="g-2 row">
+                <div class="form-group col-sm-6 my-1">
                   <label for="firstname" class="form-label">First name</label>
                   <input type="text" class="form-control" id="firstname" placeholder="First Name">
-                 
+                 <p id="firstNameError"></p>
                 </div>
-                <div class="col-sm-6">
+                <div class="form-group col-sm-6 my-1">
                   <label for="lastname" class="form-label">Last name</label>
                   <input type="text" class="form-control" id="lastname" placeholder="Last Name">
-                  
+                  <p id="lastNameError"></p>
                 </div>
-                <div class="col-sm-6">
+                <div class="form-group col-sm-6 my-1">
                   <label for="signupEmail" class="form-label">Email</label>
                   
                     
                     <input type="email" class="form-control" id="signupEmail" placeholder="Email ID" aria-describedby="inputGroupPrepend">
-                    
+                    <p id="emailError"></p>
                   
                 </div>
-                <div class="col-sm-6">
+                <div class="form-group col-sm-6 my-1">
                   <label for="signupPassword" class="form-label">Password</label>
                   <input type="password" class="form-control" id="signupPassword" placeholder="Password">
-                  
+                  <p id="pwSignupError"></p>
                 </div>
                
                 
-                <div class="col-12">
-                  <div class="form-check">
+                
+                  <div class="form-group form-check col-12">
                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck">
                     <label class="form-check-label" for="invalidCheck">
                       I agree to terms of use
                     </label>
                     
                   </div>
-                </div>
+                
                 <div class="col-sm-12">
                   <button type="submit" class="btn btn-dark" data-bs-dismiss="modal" id="signupSubmit">Submit</button>
                   

@@ -18,8 +18,12 @@ body{
 background-color: floralwhite;
 }
 
-.err{
+.error{
     border:3px solid red;
+    
+}
+
+.err-msg{
     color:red;
 }
     
