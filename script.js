@@ -35,32 +35,32 @@
          
          //------------------------------------------------------------------------------------------------------
          
-         //PREVENT SUBMISSION OF FORMS WITH INCORRECT FIELDS
+         //VALIDATING EMAIL ADDRESS
 
          
-         function validateEmail(emailid)  
-         {  
-            if (emailid==null || emailid==""){return false;}
-                
-                else{
-         var atposition=emailid.prototype.indexOf("@");  
-         var dotposition=emailid.lastIndexOf(".");  
-         if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
-            
-           return false;  
-           }  
+         function validateEmail(emailid)
+    {
+        if (emailid==null || emailid=="")
+            return false;
+        else{
+            if(emailid && emailid.indexOf('@')<=0)
+                return false;
+            if(emailid && (emailid.charAt(emailid.length-4)!='.') && (emailid.charAt(emailid.length-3)!='.'))
+                return false;
         }
 
-           return true;
-         }  
+        return true;
 
+    }
+
+    //VALIDATING SIGNUP FORM
          
          function validateSignupForm(e){ 
             
            
            
            
-;         var firstName=document.getElementById("firstname"); 
+        var firstName=document.getElementById("firstname"); 
  
          var lastName=document.getElementById("lastname"); 
          var emailid=document.getElementById("signupEmail"); 
@@ -88,7 +88,7 @@
            
           }
 
-          if(validateEmail(emailid)==false)
+          if(validateEmail(emailid.value)==false)
           {
             emailid.className+=" error";
             document.getElementById("emailError").className+=" err-msg";
@@ -103,15 +103,37 @@
           }
          
         
-        //  if(password.length<6){  
-        //    alert("Password must be at least 6 characters long.");  
-        //    return false;  
-        //    }  
+        
+         }
+
+         //VALIDATING LOGIN FORM
+         function validateLoginForm(e){
+
+            var emailid=document.getElementById("loginEmail"); 
+         var password=document.getElementById("loginpw");
+            if(validateEmail(emailid.value)==false)
+          {
+            emailid.className+=" error";
+            document.getElementById("loginEmailError").className+=" err-msg";
+            document.getElementById("loginEmailError").innerText="PLEASE ENTER VALID EMAIL"
+          }
+
+          if(password.value.length<6)
+          {
+            password.className+=" error";
+            document.getElementById("loginpwError").className+=" err-msg";
+            document.getElementById("loginpwError").innerText="PASSWORD MUST BE 6 CHARACTERS LONG";
+          }
          }
          
          document.getElementById("signupForm").addEventListener("submit",function(e){
             e.preventDefault();
             validateSignupForm();
+         });
+
+         document.getElementById("loginForm").addEventListener("submit",function(e){
+            e.preventDefault();
+            validateLoginForm();
          });
          
          
