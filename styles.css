@@ -26,4 +26,18 @@ background-color: floralwhite;
 .err-msg{
     color:red;
 }
+
+#dashboard{
+    width: 300px;
+    height:500px;
+}
     
+.hide{
+    display:none;
+    visibility: hidden;
+}
+
+.show{
+    display:block;
+    background-color:rgb(38, 24, 53); 
+}

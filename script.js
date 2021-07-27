@@ -73,7 +73,7 @@ let userNo = Number(localStorage.getItem('noOfUsers'));
            document.getElementById("firstNameError").className+=" err-msg";
            document.getElementById("firstNameError").innerText="PLEASE ENTER VALID FIRST NAME"
            
-          console.log(firstName.className);
+         
           
          }
 
@@ -106,6 +106,8 @@ let userNo = Number(localStorage.getItem('noOfUsers'));
          
         if(flag)
         {
+
+           
             var currentUserFname="user"+localStorage.getItem('noOfUsers')+"fname";
             localStorage.setItem(currentUserFname,firstName.value);
 
@@ -120,9 +122,15 @@ let userNo = Number(localStorage.getItem('noOfUsers'));
 
             localStorage.setItem('noOfUsers',(userNo+1).toString());
 
+            document.getElementById("title-desc").className+=" hide";
+            document.getElementById("signupModal").className+=" hide";
+           
+            document.getElementById("dashboard").className+=" show";
 
+            $('#signupModal').modal('hide');
             
         }
+
         
          }
 
@@ -148,7 +156,10 @@ let userNo = Number(localStorage.getItem('noOfUsers'));
          
          document.getElementById("signupForm").addEventListener("submit",function(e){
             e.preventDefault();
-            validateSignupForm();
+            
+                validateSignupForm();
+            
+           
          });
 
          document.getElementById("loginForm").addEventListener("submit",function(e){
